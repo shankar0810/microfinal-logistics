@@ -1,0 +1,5 @@
+spring:
+  application:
+    name: retailer-service
+  config:
+    import: optional:configserver:http://localhost:8888

@@ -1,0 +1,30 @@
+eureka:
+  client:
+    register-with-eureka: false
+server:
+  port: 8222
+spring:
+  application:
+    name: gateway
+  cloud:
+    gateway:
+      discovery:
+        locator:
+          enabled: true
+      routes:
+        - id:
+          uri: http://localhost:3332
+          predicates:
+            - Path=/manufacturer/**
+        - id: supplier-service
+          uri: http://localhost:3333
+          predicates:
+            - Path=/order/**
+        - id: retailer-service
+          uri: http://localhost:3334
+          predicates:
+            - Path=/retailer/**
+        - id: customer-service
+          uri: http://localhost:3335
+          predicates:
+            - Path=/customer/**
